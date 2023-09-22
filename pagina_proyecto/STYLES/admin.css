@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    display: flex;
+    height: 12vh;
+    background-color: #34495E;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+.logo img{
+   height: 15vh;
+   padding-left: 50px;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+nav a{
+    font-weight: 600;
+    padding-right: 30px;
+    transition: all 400ms ease;
+    font-size: 15px;
+}
+nav a:hover{
+    color: goldenrod;
+}
+nav img{
+    width: 20px;
+    height: 20px;
+}
+
+.inicio_sesion:hover{
+    color: goldenrod;
+}
+body{
+    background:  linear-gradient(to top, hsla(0, 0%, 50%, 0), hsla(0, 0%, 100%, 0.859)),url(../IMAGES/fondoCamion.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.titulo{
+    font-size: 150%;
+    margin: 30px;
+    text-align: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton {
+    display: block; /* Cambia a 'block' para que cada botón ocupe toda la línea */
+    background-color: #34495E;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px; /* Agrega espacio inferior para separar los botones */
+    border: 3px solid black;
+    border-radius: 1.5em;
+    width: 70%;
+    white-space: nowrap;
+    padding: 1em 1em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.boton:hover {
+    background-color: #2C3E50;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+
+.todo{
+    
+    border-radius: 25px;
+    margin-right: 50%;
+    width: 23%;
+    background-color: #ffffff57;
+}
+
+
+.regresar{  
+    background-color: white; 
+    height: auto;
+    width: 200px;
+    border-radius: 25px;
+    border: 3px solid black;
+    margin: 0 auto;
+    margin-left: 20px; 
+}
+
+

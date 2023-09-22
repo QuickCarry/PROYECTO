@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    background-image: url(../IMAGES/fondoCamion.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    height: 15vh;
+    background-color: #34495E;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo img {
+    height: 15vh;
+    padding-left: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+nav a {
+    font-weight: 600;
+    padding-right: 15px;
+    transition: all 400ms ease;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: goldenrod;
+}
+nav img{
+    width: 20px;
+    height: 20px;
+}
+.container {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.login {
+    width: 350px;
+    height: 440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid gray;
+    flex-direction: column;
+    box-shadow: 1px 1px 4px 2px black;
+    background-color: transparent;
+    backdrop-filter: blur(3px);
+}
+
+h1 {
+    position: relative;
+    top: -100px; 
+}
+hr{
+    position: relative;
+    top: -90px;
+    width: 300px;
+    height: 2px;
+    background-color: black;
+    border: none;
+}
+
+.login input {
+    display: block;
+    margin-bottom: 20px;
+    width: 300px;
+    padding: 10px;
+    border-radius: 1em;
+    border: none;
+    border-bottom: 4px solid #34495E;
+    outline: none;
+}
+
+.boton {
+    padding: 1em;
+    border-radius: 1em;
+    width: 200px;
+    border: none;
+    border-bottom: 3px solid #34495E;
+    font-weight: bold;
+}
+
+.boton:hover {
+    color: dimgray;
+    cursor: pointer;
+}
+
+.iniciar-sesion {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+p:hover {
+    color: goldenrod;
+}
+
+.p_error1{
+    color: red;
+    font-size: 20px;
+    position: relative;
+    top: -70px;
+}
+
+.footer{
+    width: 100%;
+    background-color: #34495E;
+    position: absolute;
+    bottom: 0;
+}
+.footer .container-footer{
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px;
+    padding: 10px 0px;
+    text-align: center;
+}
+.footer .container-footer .box h4{
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.footer .container-footer .box p{
+    color: #efefef;
+    margin-bottom: 10px;
+}
+.footer .container-footer .redes-sociales a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    transition: transform 0.3s ease;
+}
+.footer .container-footer .redes-sociales a:hover{
+    transform: scale(1.2);
+}
+.footer .container-footer .redes-sociales img{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
