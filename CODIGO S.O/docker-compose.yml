@@ -1,0 +1,44 @@
+version: '3.2'
+services:
+  web:
+    image: php:latest
+    image: httpd:latest
+    container_name: container_web
+    restart: always
+    volumes:
+      - ./html:/var/www/html
+    expose: 
+      - 80
+    ports:
+      - "80:80"
+    depends_on:
+      - db1
+    networks:
+      red_interna:
+        ipv4_address: 192.168.20.30
+
+  db1:
+    image: mariadb
+    container_name: container_bd
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: SinerGync
+      MARIADB_USER: usuario
+      MARIADB_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      red_interna:
+        ipv4_address: 192.168.20.40
+    volumes:
+      - /opt/mysql:/var/lib/mysql
+    expose:
+      - 3306
+
+networks:
+  red_interna:
+    ipam:
+      config:
+        - subnet: 192.168.20.0/24   
