@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    background: url(../IMAGES/camionero.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    display: flex;
+    height: 125px;
+    background-color: #34495E;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+.logo img {
+    height: 120px;
+    padding-left: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+nav a {
+    font-weight: 600;
+    padding-right: 15px;
+    transition: all 400ms ease;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: goldenrod;
+}
+
+nav img {
+    width: 20px;
+    height: 20px;
+}
+.table-container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+    
+}
+  
+.table-header {
+  display: grid;
+  background-color: #2C3E50;
+  grid-template-columns: repeat(5, 1fr);
+  color: #fff;
+}
+.table-cell {
+  flex: 1;
+  padding: 8px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: white;
+  color: #000;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.V{
+    display: none;
+    background-color: #34495E;
+    color: white;
+}
+.H{
+    display: block;
+    background-color: #34495E;
+    color: white;
+}
+@media (max-width: 1100px) {
+    .H{
+        display: none;
+    }
+    .V{
+        display: block;
+    }
+    .table-header{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.Estado{
+    display: block; 
+    width: 100%;
+    border-radius: 0.8em;
+    padding: 0.5em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #34495E;
+    color: white;
+}
+.Estado:hover {
+    background-color: #2C3E50;
+}
+.parrafo{
+    margin: 5px;
+    font-size: 25px;
+}
+.estadoP{
+    position: relative;
+    top: 50px;
+    font-size: 20px;
+}
+.botones-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente los botones */
+    align-items: center;
+    margin-top: 20px; /* Espacio entre la tabla y los botones */
+}
+.boton {
+    display: inline-block; /* Cambia a 'block' para que cada botón ocupe toda la línea */
+    background-color: #34495E;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px; /* Agrega espacio inferior para separar los botones */
+    border: 3px solid black;
+    border-radius: 0.8em;
+    width: auto;
+    white-space: nowrap;
+    padding: 0.5em;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 10px;
+}
+.boton:hover {
+    background-color: #2C3E50;
+}

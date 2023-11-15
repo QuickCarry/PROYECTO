@@ -1,0 +1,237 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header {
+    display: flex;
+    height: 115px;
+    background-color: #34495E;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+.logo img {
+    height: 120px;
+    padding-left: 50px;
+}
+body{
+    text-align: center;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+nav a {
+    font-weight: 600;
+    padding-right: 15px;
+    transition: all 400ms ease;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: goldenrod;
+}
+
+nav img {
+    width: 20px;
+    height: 20px;
+}
+@media (max-width: 1100px){
+header {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+}
+
+.logo img {
+    height: 120px;
+    padding: 0;
+    margin: 5px 0;
+}
+
+.menu {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.idioma-espana, .idioma-ingles {
+    display: inline-block;
+    margin: 0 10px;
+}
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+.x{
+    transition: all 400ms ease;
+}
+.x:hover{
+    transform: translateY(-5%);
+} 
+.edit{
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 400ms ease;
+}
+.edit:hover{
+    transform: translateY(-5%);
+}
+
+.x,
+.edit {
+    width: 20px; /* Tamaño deseado para las imágenes */
+    vertical-align: middle; /* Alinea verticalmente las imágenes en la celda */
+    display: inline-block; /* Asegura que las imágenes se muestren en línea */
+    height: auto;
+    margin: 0 auto;
+    max-height: 30px;
+}
+
+
+.container-add{
+    margin: auto;
+    width: 400px;
+}
+
+.container__title{
+    padding: 10px;
+    color: #000;
+    font-size: 1.9em;
+    text-align: center;
+}
+label {
+    font-weight: bold;
+    color: #333;
+}
+.container__form{
+    width: 400px;
+    height: 450px;
+    box-shadow: 0 0 20px #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0.5em;
+}
+.container__label{
+    font-size: 1.3em;
+    width: 20%;
+}
+.container_input {
+    width: 40%;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    font-size: 1em; /* Ajusta el tamaño de fuente para que sea el mismo para todos los campos de entrada */
+    padding: 5px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #2C3E50;
+}
+.container__submit{
+    background:#34495E;
+    color: white;
+    border: none;
+    padding: 10px;
+
+    width: auto;
+    font-size: 1.1em;
+    cursor:pointer;
+}
+input[type="submit"]:hover{
+    background-color: #2C3E50;
+}
+.table-container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+  
+.table-header {
+  display: grid;
+  background-color: #2C3E50;
+  grid-template-columns: repeat(4, 1fr);
+  color: #fff;
+    
+}
+  
+.table-cell {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: white;
+    color: #000;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.V{
+    display: none;
+    background-color: #34495E;
+    color: white;
+}
+.H{
+    display: block;
+    background-color: #34495E;
+    color: white;
+}
+@media (max-width: 768px) {
+    .H{
+        display: none;
+    }
+    .V{
+        display: block;
+    }
+    .table-header{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.boton {
+    display: inline-block; /* Cambia a 'block' para que cada botón ocupe toda la línea */
+    background-color: #34495E;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 30px; /* Agrega espacio inferior para separar los botones */
+    border: 3px solid black;
+    border-radius: 0.8em;
+    width: auto;
+    padding: 0.5em;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
+}
+.boton:hover {
+    background-color: #2C3E50;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.container_package{
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    top: 150px;
+    right: 10px;
+    background-color: #34495E;
+    
+    border: 1px solid black;
+}
+
+.paquete{
+    color: white;
+}

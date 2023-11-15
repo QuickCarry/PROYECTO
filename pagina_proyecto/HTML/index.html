@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../STYLES/style.css">
     <link rel="icon" type="image/x-icon" href="../IMAGES/LOGO_ICONO.ico">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Quick Carry</title>
 </head>
 
@@ -15,10 +16,10 @@
             <a href="#"> <img src="../IMAGES/LOGO_SISTEMA.png" alt=""></a>
         </div>
         <nav class="menu">
-            <a href="../PHP/inicio-sesion.php">INICIAR SESION</a>
-            <a href="rastrear.html">RASTREAR PAQUETE</a>
-            <a href="#"><img src="../IMAGES/espana.png" alt="" class="idioma"></a>
-            <a href="#"><img src="../IMAGES/estados-unidos.png" alt="" class="idioma"></a>
+            <a href="../PHP/inicio-sesion.php" class="login">INICIAR SESION</a>
+            <a href="rastrear.html" class="rastrear">RASTREAR PAQUETE</a>
+            <a href="#"><img src="../IMAGES/espana.png" alt="" class="idioma-espana"></a>
+            <a href="#"><img src="../IMAGES/estados-unidos.png" alt="" class="idioma-ingles"></a>
         </nav>
     </header>
     <div class="container">
@@ -28,8 +29,8 @@
                     <img src="../IMAGES/Transporte.jpg" alt="">
                 </figure>
                 <div class="contenido">
-                    <h4>Transporte</h4>
-                    <p>Nos dedicamos a transportar sus productos de manera segura,rapida y eficiente</p>
+                    <h4 class="transporte">Transporte</h4>
+                    <p class="text-trans">Nos dedicamos a transportar sus productos de manera segura, rapida y eficiente</p>
                 </div>
             </div>
             <div class="card">
@@ -37,8 +38,8 @@
                     <img src="../IMAGES/Ubicacion.jpg" alt="">
                 </figure>
                 <div class="contenido">
-                    <h4>Seguimiento del Producto</h4>
-                    <p>Nos dedicamos a transportar sus productos de manera segura,rapida y eficiente</p>
+                    <h4 class="segui">Seguimiento del Producto</h4>
+                    <p class="text-segui">Nos dedicamos a transportar sus productos de manera segura,rapida y eficiente</p>
                 </div>
             </div>
             <div class="card">
@@ -46,9 +47,8 @@
                     <img src="../IMAGES/Almacenes.jpg" alt="">
                 </figure>
                 <div class="contenido">
-                    <h4>Almacenes en todo el Uruguay</h4>
-                    <p>Aqui en Quick Carry contamos con almacenes en todo el uruguay para el transporte de su producto
-                    </p>
+                    <h4 class="almacen">Almacenes en todo el Uruguay</h4>
+                    <p class="text-almacen">Aqui en Quick Carry contamos con almacenes en todo el uruguay para el transporte de su producto</p>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
     <footer class="footer">
         <div class="container-footer">
             <div class="box">
-                <h4>REDES SOCIALES</h4>
+                <h4 class="R-S">REDES SOCIALES</h4>
                 <div class="redes-sociales">
                     <a href="" target="_blank"><img src="../IMAGES/facebook.png" alt=""></a>
                     <a href="https://instagram.com/quickcarryy?utm_source=qr&igshid=NGExMmI2YTkyZg%3D%3D" target="_blank"><img src="../IMAGES/instagram.png" alt=""></a>
@@ -64,14 +64,46 @@
                 </div>
             </div>
             <div class="box">
-                <h4>CONTACTANOS</h4>
+                <h4 class="contactanos-title">CONTACTANOS</h4>
                 <div class="contactanos">
-                    <p>CORREO: <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" target="_blank">quickcarry830@gmail.com</a></p>
-                    <p>TEL: xxx-xxx-xxx</p>
+                    <p class="contactanos-correo">CORREO: </p><a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" target="_blank">quickcarry830@gmail.com</a>
+                    <p class="tel">TEL: xxx-xxx-xxx</p>
                 </div>
             </div>
         </div>
     </footer >
+    <script>
+        $(document).ready(function(){
+            $(".idioma-ingles").click(function(){
+                $(".transporte").text("Transport");
+                $(".text-trans").text("We are dedicated to transporting your products safely, quickly and efficiently");
+                $(".segui").text("Product tracking");
+                $(".text-segui").text("We are dedicated to transporting your products safely, quickly and efficiently");
+                $(".almacen").text("Warehouses throughout Uruguay");
+                $(".text-almacen").text("Here at Quick Carry we have warehouses throughout Uruguay to transport your product.");
+                $(".login").text("LOG IN");
+                $(".rastrear").text("TRACK PACKAGE");
+                $(".R-S").text("SOCIAL NETWORKS");
+                $(".contactanos-title").text("CONTACT US");
+                $(".contactanos-correo").text("MAIL:");
+                $(".tel").text("PHONE: xxx-xxx-xxx");
+            })
+            $(".idioma-espana").click(function(){
+                $(".transporte").text("Transporte");
+                $(".text-trans").text("Nos dedicamos a transportar sus productos de manera segura, rapida y eficiente");
+                $(".segui").text("Seguimiento del Producto");
+                $(".text-segui").text("Nos dedicamos a transportar sus productos de manera segura,rapida y eficiente");
+                $(".almacen").text("Almacenes en todo el Uruguay");
+                $(".text-almacen").text("Aqui en Quick Carry contamos con almacenes en todo el uruguay para el transporte de su producto");
+                $(".login").text("INICIAR SESION");
+                $(".rastrear").text("RASTREAR PAQUETE");
+                $(".R-S").text("REDES SOCIALES");
+                $(".contactanos-title").text("CONTACTANOS");
+                $(".contactanos-correo").text("CORREO:");
+                $(".tel").text("TEL: xxx-xxx-xxx");
+            })
+        })
+    </script>
 </body>
 
 </html>

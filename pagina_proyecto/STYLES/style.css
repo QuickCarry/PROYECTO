@@ -1,106 +1,136 @@
 *{
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
+}
+html{
+    min-height: 110%;
+    position: relative;
+    
 }
 body{
     font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
 }
-header{
+header {
     display: flex;
-    height: 15vh;
+    height: 125px;
     background-color: #34495E;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
 }
-.logo img{
-   height: 15vh;
-   padding-left: 50px;
+.logo img {
+    height: 120px;
+    padding-left: 50px;
 }
-a{
+a {
     text-decoration: none;
     color: #fff;
 }
-nav a{
+nav a {
     font-weight: 600;
     padding-right: 15px;
     transition: all 400ms ease;
     font-size: 15px;
 }
-nav a:hover{
+
+nav a:hover {
     color: goldenrod;
 }
-nav img{
+
+nav img {
     width: 20px;
     height: 20px;
 }
-.container{
+
+.container {
     width: 100%;
-    height: 100vh;
+    height: 44rem;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    margin-bottom: 80px ;
 }
-
-.container-card{
+.container-card {
     width: 100%;
-    display: flex;
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Divide el espacio en tres columnas iguales */
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
 }
 .card{
-    width: 100%;
-    margin: 20px;
-    border-radius: 6px;
-    overflow: hidden;
     background-color: #fff;
-    border: 1px solid black;
-    box-shadow: 0px 1px 10px rga(0,0,0,0.2);
-    cursor: default;
-    transition: all 400ms ease;
+    position: relative;
+    max-width: 400px;
+    height: 450px;
+    text-align: center;
+    margin: 0 auto;
+    border: 2px solid #000;
 }
-.card:hover{
-    box-shadow: 5px 5px 20px rga(0,0,0,0.5);
-    transform: translateY(-3%);
+.card img {
+    opacity: 0.8;
+    position: relative;
+    vertical-align: top;
+    transition: 0.6s;
+    transition-property: opacity;
+    height: 446px;
+    width: 380px;
 }
-.card img{
-    width: 100%;
-    height: 250px;
+.card:hover img{
+    opacity: 1;
 }
 .card .contenido{
-    padding: 50px;
-    text-align: center;
-}
-.card .contenido p{
-    line-height: 1.5;
-    color: black;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #000;
+    width: 100%;
+    height: 100%;
 }
 .card .contenido h4{
-    margin-bottom: 15px;
+    text-align: center;
+    font-size: 35px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: 70px;
+    transition: 0.4s;
+    transition-property: transform;
 }
-.card .contenido a{
-    text-decoration: none;
-    display: inline-block;
-    padding: 10px;
-    margin-top: 10px;
-    color:  #34495E;
-    border: 1px solid #34495E;
-    border-radius: 4px;
-    transition: all 400ms ease;
+.card .contenido h4 span{
+    font-weight: 900;
 }
-.card .contenido a:hover{
-    background-color: #34495E;
-    color: goldenrod;
+.card:hover .contenido h4{
+    transform: translateY(-30px);
 }
+.card .contenido p{
+    margin: 30px 30px 0 30px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transition: 0.6s;
+    transition-property: opacity, transform;
+}
+.card:hover .contenido p{
+    opacity: 1;
+    transform: translateY(-40px);
+}
+
+
 .footer{
     width: 100%;
     background-color: #34495E;
+    position: absolute;
+    bottom: 0;
+    
 }
 .footer .container-footer{
     width: 100%;
     max-width: 1100px;
-    margin: auto;
+    margin:auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 50px;
@@ -132,4 +162,88 @@ nav img{
     width: 30px;
     height: 30px;
     text-align: center;
+}
+
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    header {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo img {
+        height: 120px;
+        padding: 0;
+        margin: 5px 0;
+    }
+
+    .menu {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .menu a {
+        display: block;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .idioma-espana, .idioma-ingles {
+        display: inline-block;
+        margin: 0 10px;
+    }
+}
+   
+@media screen and (max-width: 768px) {
+    .container{
+        height: 70rem;
+    }    
+
+    .container-card {
+        grid-template-columns: 1fr; /* Una sola columna en dispositivos móviles */
+        width: 80%;
+    }
+    
+    .card {
+        max-height: 300px; /* Establece la altura deseada */
+        max-width: 200px;
+    }
+    
+    .card img {
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+        height: 100%; /* Ajusta la altura automáticamente */
+    }
+    
+    .card .contenido h4 {
+        font-size: 20px; /* Tamaño de fuente deseado */
+    }
+    
+    .card .contenido p {
+        font-size: 12px; /* Tamaño de fuente deseado */
+    }
+}
+@media screen and (max-width: 1300px) {
+    /* Otras reglas CSS existentes para pantallas más pequeñas */
+    .container{
+        height: 90rem;
+    }    
+
+    .container-card {
+        grid-template-columns: 1fr; /* Una sola columna en dispositivos móviles */
+        gap: 40px;
+    }
+    
+    .card {
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+        max-height: 400px; /* Establece la altura deseada */
+        max-width: 600px;
+        height: 100%;
+    }
+    
+    .card img {
+        width: 100%; /* Ocupa todo el ancho del contenedor */
+        height: 24.1rem; /* Ajusta la altura automáticamente */
+    }
 }

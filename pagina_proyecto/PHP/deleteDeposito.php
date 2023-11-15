@@ -2,7 +2,7 @@
 require('db.php');
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $eliminar="DELETE from `almacenescarry` WHERE IDCarry = '$id'";
+    $eliminar="DELETE from `almacencarry` WHERE IDCarry = '$id'";
     $resultadoEliminar=$conn->query($eliminar);
 
         if($resultadoEliminar){

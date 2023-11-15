@@ -4,20 +4,25 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+html{
+    min-height: 110%;
+    position: relative;
+    
 }
-
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
 header{
     display: flex;
-    height: 15vh;
+    height: 125px;
     background-color: #34495E;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
 }
 .logo img{
-   height: 15vh;
+   height: 120px;
    padding-left: 50px;
 }
 a{
@@ -37,13 +42,7 @@ nav img{
     width: 20px;
     height: 20px;
 }
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 37.3em;
-}
+
 .container-rastrear{
     display: flex;
     justify-content: center;
@@ -52,16 +51,21 @@ nav img{
     width: 100%;
     height: 74.8vh;
 }
-.container input{   
-    width: 600px;
+.container-rastrear .rastreo{ 
+    width: 30rem;  
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s; /* Transición suave para el cambio de tamaño */
     outline: none;
     border-radius: 1em;
-    height: 55px;
-    padding: 0 20px 0 40px;
-    margin-top: 50px;
 }
-.container button{
-    margin-top: 70px;
+.boton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container-rastrear .button{
+    margin-top: 20px;
     width: 200px;
     height: 40px;
     cursor: pointer;
@@ -71,7 +75,8 @@ nav img{
     border-radius: 4px;
     transition: all 400ms ease;
 }
-.container button:hover{
+
+.container-rastrear .button:hover{
     background-color: #34495E;
     color: goldenrod;
 }
@@ -85,6 +90,7 @@ h2{
     background-color: #34495E;
     position: absolute;
     bottom: 0;
+    
 }
 .footer .container-footer{
     width: 100%;
@@ -122,3 +128,37 @@ h2{
     height: 30px;
     text-align: center;
 }
+@media screen and (max-width: 768px) {
+    header {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo img {
+        height: 120px;
+        padding: 0;
+        margin: 5px 0;
+    }
+
+    .menu {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .menu a {
+        display: block;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .idioma-espana, .idioma-ingles {
+        display: inline-block;
+        margin: 0 10px;
+    }
+    .footer{
+        position: absolute;
+        bottom: 0;
+    }
+}
+

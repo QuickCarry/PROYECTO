@@ -2,30 +2,76 @@
     margin: 0;
     padding: 0;
 }
-header{
+header {
     display: flex;
-    height: 12vh;
+    height: 115px;
     background-color: #34495E;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
 }
-.logo{
-   height: 15vh;
-   padding-left: 50px;
+.logo img {
+    height: 120px;
+    padding-left: 50px;
 }
 body{
     text-align: center;
-    height: 100vh;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+nav a {
+    font-weight: 600;
+    padding-right: 15px;
+    transition: all 400ms ease;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: goldenrod;
+}
+
+nav img {
+    width: 20px;
+    height: 20px;
+}
+@media (max-width: 1100px){
+header {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+}
+
+.logo img {
+    height: 120px;
+    padding: 0;
+    margin: 5px 0;
+}
+
+.menu {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.idioma-espana, .idioma-ingles {
+    display: inline-block;
+    margin: 0 10px;
+}
 }
 a{
     text-decoration: none;
     color: #fff;
 }
 .x{
-    position: relative;
-    left: 10px;
-    margin-right: 50px;
     transition: all 400ms ease;
 }
 .x:hover{
@@ -33,28 +79,20 @@ a{
 } 
 .edit{
     border-radius: 3px;
-    position: relative;
-    right: 10px;
     text-decoration: none;
-    margin-left: 50px;
     transition: all 400ms ease;
 }
 .edit:hover{
     transform: translateY(-5%);
 }
-.container-imagenes {
-    display: flex; /* Usa un contenedor flex para alinear horizontalmente */
-    justify-content: center; /* Centra horizontalmente las imágenes */
-    align-items: center; /* Centra verticalmente las imágenes */
-}
 
 .x,
 .edit {
     width: 20px; /* Tamaño deseado para las imágenes */
-    height: auto; /* Tamaño deseado para las imágenes */
     vertical-align: middle; /* Alinea verticalmente las imágenes en la celda */
     display: inline-block; /* Asegura que las imágenes se muestren en línea */
     height: auto;
+    margin: 0 auto;
     max-height: 30px;
 }
 
@@ -76,13 +114,13 @@ label {
 }
 .container__form{
     width: 400px;
-    height: 450px;
+    height: 400px;
     box-shadow: 0 0 20px #333;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 0.5em;
+    margin-bottom: 1em;
 }
 .container__label{
     font-size: 1.3em;
@@ -111,64 +149,69 @@ label {
 input[type="submit"]:hover{
     background-color: #2C3E50;
 }
-
-
 .table-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
-}
-
-
-h1{
-    text-align: center;
-
-}
-.table-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 80%;
+    margin: 20px auto;
     text-align: center;
 }
-
-.table{
+  
+.table-header {
+  display: grid;
+  background-color: #2C3E50;
+  grid-template-columns: repeat(6, 1fr);
+  color: #fff;
     
-    width: 30%; /* Ancho deseado para la tabla */
-    border-collapse: collapse;
-    margin-bottom: 10px;
-    position: relative;
 }
-
-th, td {
+  
+.table-cell {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: white;
+    color: #000;
     border: 1px solid #000;
-    padding: 4px;
-    text-align: center; /* Centra el contenido de las celdas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
-
-th {
+.V{
+    display: none;
     background-color: #34495E;
     color: white;
 }
-.th-especifico{
-    width: 25%;
+.H{
+    display: block;
+    background-color: #34495E;
+    color: white;
 }
-td a {
-    text-decoration: none;
-    margin-right: 5px;
+@media (max-width: 1100px) {
+    .H{
+        display: none;
+    }
+    .V{
+        display: block;
+    }
+    .table-header{
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 .boton {
     display: inline-block; /* Cambia a 'block' para que cada botón ocupe toda la línea */
     background-color: #34495E;
     color: #fff;
     text-decoration: none;
-    margin-bottom: 14px; /* Agrega espacio inferior para separar los botones */
+    margin-bottom: 30px; /* Agrega espacio inferior para separar los botones */
     border: 3px solid black;
     border-radius: 0.8em;
     width: auto;
     padding: 0.5em;
     text-align: center;
     font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
 }
 .boton:hover {
     background-color: #2C3E50;
@@ -176,4 +219,34 @@ td a {
 a{
     text-decoration: none;
     color: white;
+}
+
+.container_package{
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    top: 150px;
+    right: 10px;
+    background-color: #34495E;
+    
+    border: 1px solid black;
+}
+
+.paquete{
+    color: white;
+}
+.Estado{
+    width: 100%;
+    border-radius: 1em;
+    padding: 0.8em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.8em;
+    cursor: pointer;
+    background-color: #34495E;
+    color: white;
+    text-align: center;
+}
+.Estado:hover {
+    background-color: #2C3E50;
 }

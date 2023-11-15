@@ -1,3 +1,12 @@
+<?php 
+session_start();
+error_reporting(0);
+$varsession = $_SESSION["usuario"];
+if ($varsession == NULL || $varsession == '') {
+    header("Location: inicio-sesion.php");
+    die(); // Detén la ejecución del script actual   
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +14,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../STYLES/usuarios.css">
     <link rel="icon" type="image/x-icon" href="../IMAGES/LOGO_ICONO.ico">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Usuarios</title>
 </head>
 <body>
-    <header>
-        <img src="../IMAGES/LOGO_SISTEMA.png" alt="LOGO DEL SISTEMA" class="logo">
+<header>
+        <div class="logo">
+            <a href="#"> <img src="../IMAGES/LOGO_SISTEMA.png" alt="" class="logo"></a>
+        </div>
+        <nav class="menu">
+            <a href="#"><img src="../IMAGES/espana.png" alt="" class="idioma-espana"></a>
+            <a href="#"><img src="../IMAGES/estados-unidos.png" alt="" class="idioma-ingles"></a>
+        </nav>
     </header>
     <?php
     require('db.php');
@@ -25,30 +41,33 @@
         <form class="container__form" action="../PHP/editarPersona.php" method="post">
             <input type="hidden" value="<?php echo $fila['id'];?>" name="id"> 
         <div class="form-row">
-            <label for="nombre" class="container__label">Nombre</label>   
+            <label for="nombre" class="container__label 1">Nombre</label>   
             <input type="text" value="<?php echo $fila['nombre']; ?>" name="nombre" class="container_input">
         </div>  
         <div class="form-row">  
-            <label for="apellido" class="container__label">Apellido</label>
+            <label for="apellido" class="container__label 2">Apellido</label>
             <input type="text" value="<?php echo $fila['apellido'];?>" name="apellido" class="container_input">
         </div>      
         <div class="form-row">  
-            <label for="correo" class="container__label">Correo</label>
+            <label for="correo" class="container__label 3">Correo</label>
             <input type="text" value="<?php echo $fila['correo'];?>" name="correo" class="container_input">
         </div>  
         <div class="form-row"> 
-            <label for="contraseña" class="container__label">Contraseña</label>   
+            <label for="contraseña" class="container__label 4">Contraseña</label>   
             <input type="text" value="<?php echo $fila['contraseña'];?>" name="contraseña" class="container_input">
         </div>      
         <div class="form-row">
-            <label for="cargo" class="container__label">Cargo</label>
+            <label for="cargo" class="container__label 5">Cargo</label>
             <input type="text" value="<?php echo $fila['cargo'];?>" name="cargo" class="container_input">
         </div>      
         <div class="form-row">
-            <label for="horario" class="container__label">Horario</label>
+            <label for="horario" class="container__label 6">Horario</label>
             <input type="text" value="<?php echo $fila['horario'];?>" name="horario" placeholder="00:00 - 00:00" class="container_input">
-        </div>      
-        <input type="submit" value="CONFIRMAR" class="container__submit">
+        </div>
+        <div class="botones-container">      
+        <input type="submit" value="Confirmar" class="boton 7">
+        <a href="gestion_usuarios.php" class="boton 8">Volver</a>
+        </div>
            
     </form>
         
@@ -59,6 +78,34 @@
 ?>
     </div>
 <script src="../JS/confirmacionUsuarios.js"></script>
+<script>
+    $(document).ready(function(){
+            $(".idioma-ingles").click(function(){
+                $("title").text("Users");
+                $("h2").text("Editing panel");
+                $(".1").text("Name");
+                $(".2").text("Last name");
+                $(".3").text("Mail");
+                $(".4").text("Password");
+                $(".5").text("Rol");
+                $(".6").text("Schedule");
+                $(".7").val("Confirm");
+                $(".8").text("Go Back");
+            })
+            $(".idioma-espana").click(function(){
+                $("title").text("Usuarios");
+                $("h2").text("Panel de edición");
+                $(".1").text("Nombre");
+                $(".2").text("Apellido");
+                $(".3").text("Correo");
+                $(".4").text("Contraseña");
+                $(".5").text("Cargo");
+                $(".6").text("Horario");
+                $(".7").val("Confirmar");
+                $(".8").text("Volver");
+            })
+})
+        </script>
 </body>
 
 </html>
@@ -93,7 +140,8 @@ $resultadoModificar=$conn->query($modificacion);
         $fin = $conn->query($sentenciaChofer);
     }
     if($resultadoModificar || $fin){
-        header("Location: ../PHP/gestion_usuarios.php");
+	echo '<script type="text/javascript">window.location.href = "gestion_usuarios.php"</script>';
+        //header("Location: ../PHP/gestion_usuarios.php");
     }else{
         echo "<script> alert('No se pudo modificar'); </script>";
     }

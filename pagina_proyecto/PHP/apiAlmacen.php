@@ -43,11 +43,17 @@ class paquete{
 
     public function delete($id){
     require('db.php'); // Asegúrate de que este archivo contiene la conexión a la base de datos
-        $sentenciaDELETE = "DELETE FROM `paquete` WHERE idPaquete = '$id'";
+        
+        $sentenciadelete="DELETE FROM `pertenecen` WHERE IdPaquete = '$id'";
+        $resultado=$conn->query($sentenciadelete);    
+    
+        $sentenciaDELETE = "DELETE FROM `paquete` WHERE IdPaquete = '$id'";
         $listaDELETE = $conn->query($sentenciaDELETE);
-        if ($listaDELETE){
+        
+        
+        if ($listaDELETE && $resultado){
             echo "Paquete eliminado con éxito";
-            header("Location: gestion_paquetes.php");
+            header("Location: http://localhost/pagina_proyecto/PHP/APIS/ApiAlmacen/View/gestion_paquetes.php");
         } else {
             echo "Ocurrió un error al eliminar el paquete";
             echo "<script>alert('No se pudo eliminar');</script>";

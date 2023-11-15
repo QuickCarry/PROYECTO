@@ -1,17 +1,18 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 header{
     display: flex;
-    height: 12vh;
+    height: 120px;
     background-color: #34495E;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
 }
 .logo img{
-   height: 15vh;
+   height: 120px;
    padding-left: 50px;
 }
 a{
@@ -36,22 +37,34 @@ nav img{
     color: goldenrod;
 }
 body{
+    font-family: Arial, Helvetica, sans-serif;
     background:  linear-gradient(to top, hsla(0, 0%, 50%, 0), hsla(0, 0%, 100%, 0.859)),url(../IMAGES/fondoCamion.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    background-position: center;
 }
 
-.titulo{
-    font-size: 150%;
+h2{
+    font-size: 30px;
     margin: 30px;
     text-align: center;
+    color: #000;
+}
+.todo{
+    display: grid;
+    height: 450px; /* Establece la altura que desees */
+    width: 500px; /* Establece el ancho que desees */
+    margin: 0 auto; 
+    background-color: #ffffff57;
+    border-radius: 1em;
 }
 .container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
 }
 
 .boton {
@@ -62,9 +75,8 @@ body{
     margin-bottom: 10px; /* Agrega espacio inferior para separar los botones */
     border: 3px solid black;
     border-radius: 1.5em;
-    width: 70%;
-    white-space: nowrap;
-    padding: 1em 1em;
+    width: 25rem;
+    padding: 0.8em;
     text-align: center;
     font-weight: bold;
     font-size: 1.2em;
@@ -77,25 +89,34 @@ body{
 a{
     text-decoration: none;
 }
+@media screen and (max-width: 768px) {
+    header {
+        height: auto;
+        flex-direction: column;
+        text-align: center;
+    }
 
+    .logo img {
+        height: 120px;
+        padding: 0;
+        margin: 5px 0;
+    }
 
-.todo{
-    
-    border-radius: 25px;
-    margin-right: 50%;
-    width: 23%;
-    background-color: #ffffff57;
-}
+    .menu {
+        margin-top: 10px;
+        text-align: center;
+    }
 
+    .menu a {
+        display: block;
+        padding: 10px;
+        font-size: 18px;
+    }
 
-.regresar{  
-    background-color: white; 
-    height: auto;
-    width: 200px;
-    border-radius: 25px;
-    border: 3px solid black;
-    margin: 0 auto;
-    margin-left: 20px; 
+    .idioma-espana, .idioma-ingles {
+        display: inline-block;
+        margin: 0 10px;
+    }
 }
 
 
