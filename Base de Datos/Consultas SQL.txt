@@ -1,0 +1,121 @@
+-- 1) MOSTRAR LOS PAQUETES ENTREGADOS EN EL MES DE MAYO DEL 2023 CON DESTINO  A LA CIUDAD DE MELO
+Select distinct paquete.* from paquete join vahacia where month(FechaEntrega)=5 and year(FechaEntrega)=2023 and Ciudad like 'Melo';
+
+-- 2) MOSTRAR TODOS LOS ALMACENES Y LOS PAQUETES QUE FUERON ENTREGADOS EN LOS MISMOS DURANTE EL 2023, ORDENARLOS ADEMAS DE LOS QUE RECIBIERON MAS PAQUETES A LOS QUE RECIBIERON MENOS
+SELECT almacencarry.Departamento AS Almacen, COUNT(pertenecen.IdPaquete) AS CantidadPaquetesEntregados FROM almacencarry  JOIN guarda  ON almacencarry.IDCarry = guarda.IDCarry
+JOIN lote ON guarda.IdLote = lote.IdLote
+JOIN pertenecen ON lote.IdLote = pertenecen.IdLote JOIN paquete on pertenecen.IdPaquete=paquete.IdPaquete
+JOIN vahacia on paquete.IdPaquete=vahacia.IdPaquete WHERE (paquete.Estado='Entregado') AND YEAR(vahacia.FechaEntrega) = 2023
+GROUP BY almacencarry.Departamento ORDER BY CantidadPaquetesEntregados DESC;
+
+-- 3)MOSTRAR TODOS LOS CAMIONES REGISTRADOS Y QUE TEREA SE ENCUENTRAN REALIZANDO EN ESTE MOMENTO
+Select vehiculo.* from vehiculo join camion on camion.Matricula=vehiculo.Matricula;
+
+-- 4) MOSTRAR TODOS LOS CAMIONES QUE VISITARON DURANTE EL MES DE JUNIO UN ALMACEN DADO
+Select transporta.Matricula from transporta join lote on lote.IdLote=transporta.IdLote join guarda on guarda.IdLote=lote.IdLote where guarda.IdCarry=7 and month(transporta.FechaEntrega)=6;
+
+-- 5) MOSTRAR DESTINO, LOTE, ALMACEN DE DESTINO Y CAMIÓN QUE TRANSPORTA UN PAQUETE DADO.
+Select paquete.Departamento, lote.IdLote, lote.DestinoLote, transporta.Matricula from paquete join pertenecen on pertenecen.IdPaquete=paquete.IdPaquete join lote on lote.IdLote=pertenecen.IdLote join transporta on transporta.IdLote=lote.IdLote where paquete.IdPaquete=3;
+
+-- 6) MOSTRAR EL IDENTIFICADOR DEL PAQUETE, IDENTIFICADOR DE LOTE, MATRICULA DEL CAMION QUE LO TRANSPORTA, ALMACEN DE DESTINO, DIRECCIÓN FINAL Y EL ESTADO DEL ENVÍO, PARA LOS PAQUETES QUE SE RECIBIERON HACE MAS DE 3 DÍAS.
+Select paquete.IdPaquete, lote.IdLote, transporta.Matricula, lote.DestinoLote, paquete.Departamento, paquete.Estado from paquete join pertenecen on pertenecen.IdPaquete=paquete.IdPaquete join lote on lote.IdLote=pertenecen.IdLote join transporta on transporta.IdLote=lote.IdLote where datediff(current_date(), paquete.FechaRegistro)>3;
+
+-- 7) MOSTRAR TODOS LOS PAQUETES A LOS QUE AÚN NO SE LES HA ASIGNADO UN LOTE Y LA FECHA EN LA QUE FUERON RECIBIDOS.
+Select IdPaquete, FechaRegistro from paquete where IdPaquete not in (Select IdPaquete from pertenecen);
+
+-- 8) MOSTRAR MATRICULA DE LOS CAMIONES QUE SE ENCUENTRAN FUERA DE SERVICIO.
+Select camion.Matricula from camion join vehiculo on vehiculo.Matricula=camion.Matricula where Servicio='Fuera de servicio';
+
+-- 9)MOSTRAR TODOS LOS CAMIONES QUE NO TIENEN UN CONDUCTOR ASIGNADO Y SU ESTADO OPERATIVO.
+Select vehiculo.Matricula, vehiculo.Servicio from vehiculo join camion on vehiculo.Matricula=camion.Matricula left join conduce on conduce.Matricula=camion.Matricula where conduce.Matricula is null;
+
+-- 10)MOSTRAR TODOS LOS ALMACENES QUE SE ENCUENTRAN EN UN RECORRIDO DADO
+Select almacencarry.* from almacencarry join llevaa on llevaa.IDCarry=almacencarry.IDCarry where llevaa.idRuta=2;
+
+-- 11) MOSTRAR LA LISTA DE LOS PAQUETES Y SU ESTADO, QUE SE ENCUENTREN EN UN ALMACÉN ESPECÍFICO.
+SELECT paquete.IdPaquete, paquete.Estado
+FROM paquete 
+JOIN pertenecen ON paquete.IdPaquete = pertenecen.IdPaquete 
+JOIN lote ON pertenecen.IdLote = lote.IdLote 
+JOIN guarda ON lote.IdLote = guarda.IdLote 
+JOIN almacencarry ON guarda.IDCarry = almacencarry.IDCarry 
+WHERE almacencarry.IDCarry = 7;
+
+-- 12) MOSTRAR LOS LOTES QUE LLEGARON A UN ALMACÉN ESPECÍFICO DURANTE EL  MES DE AGOSTO DEL 2023.
+SELECT lote.IdLote, lote.EstadoLote, lote.DestinoLote 
+FROM lote 
+join transporta on lote.IdLote = transporta.IdLote
+WHERE YEAR(transporta.FechaEntrega) = 2023
+AND MONTH(transporta.FechaEntrega) = 8
+AND lote.IdLote IN (
+    SELECT IdLote
+    FROM guarda
+    WHERE guarda.IdCarry = 5
+);
+
+
+-- 13) MUESTRA LA INFORMACIÓN DE LOS CAMIONES QUE ACTUALMENTE SE ENCUENTREN EN RUTA, JUNTO CON SU CARGA, DESTINO Y HORARIO 
+-- ESTIMADO DE LLEGADA.
+SELECT c.Matricula AS Camion_Matricula, l.IdLote, l.DestinoLote AS Destino, l.fechaEstimada
+FROM camion c
+join vehiculo on c.Matricula = vehiculo.Matricula
+join transporta on c.Matricula = transporta.Matricula
+JOIN lote l ON transporta.IdLote = l.IdLote
+JOIN pertenecen ON l.IdLote = pertenecen.IdLote
+JOIN paquete p ON pertenecen.IdPaquete = p.IdPaquete
+WHERE vehiculo.servicio = 'En ruta';
+
+
+-- 14) MUESTRE INFORMACIÓN DE UN PAQUETE ESPECÍFICO QUE YA HAYA SIDO ENTREGADO. ESTO IMPLICA, IDENTIFICADOR DE: LOTE, RECORRIDO, CAMIÓN 
+-- QUE LO TRANSPORTÓ, ALMACÉN DONDE SE ALMACENÓ, CAMIONETA QUE HIZO EL ÚLTIMO TRAMO Y DIRECCIÓN FINAL.
+SELECT
+    p.IdPaquete AS IdentificadorPaquete,
+    l.IdLote AS IdentificadorLote,
+    lv.IdRuta AS IdentificadorRecorrido,
+    t.Matricula AS CamionTransporte,
+    l.DestinoLote AS AlmacenDestino,
+    vh.Matricula AS CamionetaUltimoTramo,
+    p.Departamento AS DireccionFinal
+FROM paquete p
+JOIN pertenecen pe ON p.IdPaquete = pe.IdPaquete
+JOIN lote l ON pe.IdLote = l.IdLote
+join guarda on l.IdLote = guarda.IdLote
+JOIN transporta t ON guarda.IdLote = t.IdLote
+JOIN vahacia vh ON p.IdPaquete = vh.IdPaquete
+JOIN llevaa lv ON lv.IDCarry = guarda.IDCarry
+WHERE p.IdPaquete = 3
+  AND p.Estado = 'Entregado';
+
+
+-- 15) DADO UN CAMIÓN, MOSTRAR LOS RECORRIDOS REALIZADOS Y LOS ALMACENES VISITADOS EN EL ÚLTIMO MES. 
+SELECT
+	guarda.IDCarry,
+    guarda.IdRuta AS IdentificadorRecorrido
+FROM transporta 
+join guarda on transporta.IdLote = guarda.IdLote
+WHERE transporta.Matricula = 'XYZ'
+  AND transporta.FechaEntrega >= DATE_SUB(NOW(), INTERVAL 1 MONTH);
+
+
+ 
+
+-- 16) MOSTRAR LOS PAQUETES ENTREGADOS EN EL MES DE JULIO DE 2023, ORDENADOS POR FECHA DE ENTREGA DE FORMA DESCENDENTE. 
+SELECT *
+FROM paquete p
+join vahacia on p.IdPaquete = vahacia.IdPaquete
+WHERE YEAR(vahacia.FechaEntrega) = 2023
+  AND MONTH(vahacia.FechaEntrega) = 7
+  AND p.Estado = 'Entregado'
+ORDER BY p.FechaRegistro DESC;
+
+
+-- 17) MOSTRAR LOS CAMIONES QUE NO HICIERON NINGÚN RECORRIDO ENTRE EL 10 Y 17 DE JULIO DE 2023.
+    SELECT camion.Matricula AS MatriculaCamion 
+    FROM camion 
+	WHERE camion.Matricula NOT IN (
+    SELECT DISTINCT c.Matricula
+    FROM camion c
+    JOIN transporta t ON c.Matricula = t.Matricula
+    JOIN lote lo ON lo.IdLote = t.IdLote
+    WHERE lo.fechaEstimada >= '2023-07-10 00:00:00' AND lo.fechaEstimada <= '2023-07-17 23:59:59'
+);
